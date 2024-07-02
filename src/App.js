@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import SearchBar from './SearchBar';
+import ProjectList from './ProjectList';
 
-function App() {
+const App = () => {
+  const [projects, setProjects] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredProjects, setFilteredProjects] = useState([]);
+
+  useEffect(() => {
+    // Fetch project data from an API or use static data
+    const fetchedProjects = [
+      { name: 'proj123', features: ['data file type', 'xml parsing'] },
+      { name: 'proj456', features: ['archival type', 'data file type'] },
+      // Add more projects as needed
+    ];
+    setProjects(fetchedProjects);
+  }, []);
+
+  const handleSearch = () => {
+    const filtered = searchTerm
+      ? projects.filter(project =>
+        project.features.some(feature => matchFeature(feature, searchTerm))
+      )
+      : [];
+    setFilteredProjects(filtered);
+  };
+
+  const matchFeature = (feature, searchTerm) => {
+    const featureWords = feature.toLowerCase().split(' ');
+    const searchWords = searchTerm.toLowerCase().split(' ');
+
+    // for (let searchWord of searchWords) {
+    //   for (let featureWord of featureWords) {
+    //     if (featureWord == searchWord) {
+    //       return true;
+    //     }
+    //   }
+    // }
+
+    // return false;
+
+    return searchWords.some(searchWord =>
+      featureWords.some(featureWord => featureWord === searchWord)
+    );
+
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Project Search</h1>
+      <SearchBar onSearchTermChange={setSearchTerm} onSearch={handleSearch} />
+      <ProjectList projects={filteredProjects} />
     </div>
   );
-}
+};
 
 export default App;

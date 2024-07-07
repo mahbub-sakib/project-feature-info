@@ -1,0 +1,11 @@
+.search-bar-container {
+    margin: 20px;
+}
+
+.search-bar-container input {
+    margin-right: 10px;
+}
+
+.search-bar-container button {
+    margin-top: 10px;
+}

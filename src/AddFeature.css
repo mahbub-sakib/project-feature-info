@@ -1,0 +1,16 @@
+.add-feature-container {
+    margin: 20px;
+}
+
+.add-feature-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.add-feature-container input {
+    margin-bottom: 10px;
+}
+
+.add-feature-container button {
+    margin-top: 10px;
+}

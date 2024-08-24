@@ -42,33 +42,35 @@ const AddFeature = ({ projects, setProjects }) => {
     };
 
     return (
-        <div>
-            <h2>Add Feature</h2>
+        <div className="add-feature-container">
+            <h2 className="add-feature-header">Add Feature</h2>
             <div>
-                <label>Project Name</label>
+                <label className="add-feature-label">Project Name</label>
                 <input
                     type="text"
+                    className="add-feature-input"
                     value={projectName}
                     onChange={handleProjectNameChange}
                 />
             </div>
             <div>
-                <label>Feature List</label>
+                <label className="add-feature-label">Feature List</label>
                 {features.map((feature, index) => (
                     <input
                         key={index}
                         type="text"
+                        className="add-feature-input"
                         value={feature}
                         onChange={(e) => handleFeatureChange(index, e)}
                     />
                 ))}
-                <button onClick={handleAddAnother}>Add Another</button>
+                <button className="add-feature-button add-another-button" onClick={handleAddAnother}>Add Another</button>
             </div>
-            <button onClick={handleSave}>Save</button>
+            <button className="add-feature-button" onClick={handleSave}>Save</button>
             {projectFeatures.length > 0 && (
                 <div>
-                    <h3>Current Features for {projectName}</h3>
-                    <ul>
+                    <h3 className="add-feature-header">Current Features for {projectName}</h3>
+                    <ul className="add-feature-list">
                         {projectFeatures.map((feature, index) => (
                             <li key={index}>{feature}</li>
                         ))}

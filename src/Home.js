@@ -45,7 +45,6 @@ const Home = () => {
             <div className="content">
                 {selectedComponent === 'search' && (
                     <>
-                        <h1>Search Projects Using Features</h1>
                         <SearchBar onSearchTermChange={setSearchTerm} onSearch={handleSearch} />
                         <ProjectList projects={filteredProjects} />
                     </>

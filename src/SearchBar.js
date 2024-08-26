@@ -13,14 +13,16 @@ const SearchBar = ({ onSearchTermChange, onSearch }) => {
     };
 
     return (
-        <div>
+        <div className='search-bar-container'>
+            <h1>Search Projects Using Features</h1>
             <input
                 type="text"
+                className="search-bar-input"
                 placeholder="Search features..."
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
             />
-            <button onClick={onSearch}>Search</button>
+            <button className="search-button" onClick={onSearch}>Search</button>
         </div>
     );
 };
